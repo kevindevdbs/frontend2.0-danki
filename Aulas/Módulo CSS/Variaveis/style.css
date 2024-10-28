@@ -1,0 +1,9 @@
+:root{
+    --corpadrao: blue ;
+    --widthpadrao : 500px;
+}
+
+div{
+    background-color: var(--corpadrao);
+    width: var(--widthpadrao);
+}

@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+@keyframes animacao {
+0% { width: 0%; }
+100% { width: 100%; }
+}
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background-color: gray;
+}
+.form{
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+}
+.form img{
+    max-width: 560px;
+    height: 200px;
+    margin: 20px auto;
+    border-radius: 10px;
+    
+}
+
+.form input[type = "email"], .form input[type = "text"]{
+    max-width: 500px;
+    width: 100%;
+    height: 30px;
+    border: 1px solid black;
+    margin: 10px;
+    border-radius: 10px;
+    font-size: 15px;
+    animation-name: animacao;
+    animation-duration: 3s;
+}
+
+.form textarea{
+    resize: none;
+    margin-top: 10px;
+    max-width: 568px;
+    width: 100%;
+    height: 130px;
+    border-radius: 10px;
+    font-size: 15px;
+    padding: 30px;
+    animation-name: animacao;
+    animation-duration: 0.5s;
+}
+
+.form [type = "button"]{
+    max-width: 500px;
+    width: 500px;
+    height: 30px;
+    border: 1px solid black;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: #437ab1;
+    color: white;
+    cursor: pointer;
+}

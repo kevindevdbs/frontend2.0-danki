@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: bisque;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.w50 {
+    width: 50%;
+}
+
+.menu {
+    text-align: right;
+    padding: 10px;
+}
+
+section.banner {
+    width: 100%;
+    min-height: 500px;
+    background-color: darkblue;
+    text-align: center;
+    color: white;
+    padding: 90px;
+}
+
+section.diferenciais {
+    display: flex;
+    text-align: center;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.w33 {
+    width: 33.3%;
+    padding: 10px;
+}
+
+footer {
+    text-align: center;
+    background-color: darkorchid;
+}
+
+@media screen and (max-width: 768px) {
+
+    .w33, .w50 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    header,.menu{
+        text-align: center;
+    }
+
+}
