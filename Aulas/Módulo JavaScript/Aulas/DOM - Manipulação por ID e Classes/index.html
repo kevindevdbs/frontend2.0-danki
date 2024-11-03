@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+
+<body>
+    <!-- <div id="container">
+       <div id="box"></div>
+   </div>
+ 
+   <script>
+    var con = document.getElementById('container')
+    con.style.display = 'flex'
+    con.style.justifyContent = 'center'
+    con.style.alignItems = 'center'
+
+    var el = document.getElementById('box')
+    el.style.backgroundColor = 'red'
+    el.style.width = '500px'
+    el.style.height = '500px'
+    el.style.marginTop = '30px'
+   </script> -->
+
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
+    <script>
+        var elementos = document.getElementsByClassName('box')
+
+        // var el = elementos[0]
+
+        // el.style.backgroundColor = 'red'
+        // el.style.width = '500px'
+        // el.style.height = '500px'
+        // el.style.marginTop = '30px'
+
+
+        for( var i = 0; i < elementos.length; i++){
+            var el = elementos[i]
+
+            el.style.backgroundColor = 'red'
+            el.style.width = '500px'
+            el.style.height = '500px'
+            el.style.marginTop = '30px'
+        }
+    </script>
+
+</body>
+
+</html>

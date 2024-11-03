@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // // Cria uma nova instância do objeto Date, que representa a data e hora atuais
+        // let date = new Date();
+
+        // // Exibe um alerta com o dia do mês atual (1 a 31)
+        // alert(date.getDate());
+
+        // // Exibe um alerta com o dia da semana atual (0 a 6, onde 0 é domingo e 6 é sábado)
+        // alert(date.getDay());
+
+        // // Exibe um alerta com o ano atual (por exemplo, 2023)
+        // alert(date.getFullYear());
+
+        // // Exibe um alerta com a hora atual (0 a 23)
+        // alert(date.getHours());
+
+        // // Exibe um alerta com os minutos atuais (0 a 59)
+        // alert(date.getMinutes());
+
+
+        // Cria uma nova instância do objeto Date representando a data 27 de outubro de 2024
+        var date = new Date('2024-10-27T00:00:00.000Z')
+
+        // Cria uma nova instância do objeto Date representando a data 10 de outubro de 2024
+        var date2 = new Date('2024-10-10T00:00:00.000Z')
+
+        // Calcula a diferença absoluta em milissegundos entre as duas datas e converte para dias
+        var difenca = Math.abs(date - date2) / (1000 * 60 * 60 * 24)
+
+        // Exibe um alerta com a diferença em dias entre as duas datas
+        alert(difenca)
+    </script>
+</body>
+
+</html>

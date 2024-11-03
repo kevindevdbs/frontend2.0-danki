@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funções e Instacias</title>
+</head>
+<body>
+    <script>
+        // Definindo uma função construtora chamada "pessoa"
+        function pessoa (){
+            // Atributo "nome" é inicializado com o valor 'Guilherme'
+            this.nome = 'Guilherme'
+        }
+
+        // Criando uma nova instância de "pessoa" e atribuindo a variável "pessoa"
+        var pessoa = new pessoa()
+        // Criando outra instância de "pessoa" e atribuindo a variável "pessoa2"
+        var pessoa2 = new pessoa()
+
+        // Alterando o atributo "nome" da primeira instância "pessoa" para 'jão'
+        pessoa.nome = 'jão'
+
+        // Exibindo o atributo "nome" da segunda instância "pessoa2" em um alerta
+        // Como "pessoa2" não teve seu nome alterado, o valor exibido será 'Guilherme'
+        alert(pessoa2.nome)
+    </script>
+</body>
+</html>

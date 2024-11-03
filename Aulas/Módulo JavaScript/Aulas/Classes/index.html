@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Classes</title> 
+</head>
+
+<body>
+    <script>
+        // Classe base Animal
+        class Animal {
+            constructor(nome) {
+                this.nome = nome; // Atributo nome é inicializado
+            }
+
+            // Método para retornar o nome do animal
+            printNome() {
+                return this.nome; // Retorna o nome do animal
+            }
+        }
+
+        // Classe cachorro que herda de Animal
+        class cachorro extends Animal {
+            constructor(nome) {
+                super(nome); // Chama o construtor da classe pai (Animal)
+                this.raca = 'bulldog'; // Atributo raça é inicializado como 'bulldog'
+            }
+
+            // Método para retornar a raça do cachorro
+            printraca() {
+                return this.raca; // Retorna a raça do cachorro
+            }
+        }
+
+        // Criação de uma instância da classe cachorro
+        
+        cachorro = new cachorro("billy"); // Um novo objeto cachorro é criado com o nome "billy"
+
+        // Exibe um alerta com o nome do cachorro
+        alert(cachorro.printNome()); // Chama o método printNome() e exibe o nome
+    </script>
+</body>
+
+</html>

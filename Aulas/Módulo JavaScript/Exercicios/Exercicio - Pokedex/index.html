@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokeDex</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main">
+        <h2>Pokedex</h2>
+        <div class="pokemon-boxes"></div> <!-- Área onde os Pokémon serão exibidos -->
+        <div class="loading" id="loading">
+            <div class="loader"></div> <!-- Animação de carregamento -->
+        </div>
+    </div>
+
+    <script>
+        let offset = 0; // Variável para controlar o deslocamento dos Pokémon
+        const limit = 10; // Número de Pokémon a serem carregados por vez
+        let loading = false; // Controle de carregamento
+
+        // Função para buscar e exibir Pokémon
+        function fetchPokemon() {
+            if (loading) return; // Impede múltiplas chamadas simultâneas
+            loading = true; // Define que o carregamento está em andamento
+            document.getElementById('loading').style.display = 'block'; // Mostra o indicador de carregamento
+
+            // Simula um delay de 2 segundos antes de buscar os Pokémon
+            setTimeout(() => {
+                fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        displayPokemon(data.results);
+                        offset += limit; // Atualiza o deslocamento para a próxima busca
+                        loading = false; // Define que o carregamento terminou
+                        document.getElementById('loading').style.display = 'none'; // Esconde o indicador de carregamento
+                    })
+                    .catch(error => {
+                        console.error('Erro ao buscar Pokémon:', error);
+                        loading = false; // Define que o carregamento terminou em caso de erro
+                        document.getElementById('loading').style.display = 'none'; // Esconde o indicador de carregamento
+                    });
+            }, 2000); // Delay de 2000 milissegundos (2 segundos)
+        }
+
+        // Função para exibir os Pokémon na página
+        function displayPokemon(pokemonList) {
+            const pokemonBoxes = document.querySelector('.pokemon-boxes');
+            
+            pokemonList.forEach(pokemon => {
+                const pokemonBox = createPokemonBox(pokemon);
+                pokemonBoxes.appendChild(pokemonBox); // Adiciona cada Pokémon à área
+            });
+        }
+
+        // Função para criar a caixa de cada Pokémon
+        function createPokemonBox(pokemon) {
+            const pokemonBox = document.createElement('div');
+            pokemonBox.classList.add('pokemon-box');
+
+            const pokemonImage = document.createElement('img');
+            pokemonImage.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.url.split('/').slice(-2, -1)}.png`;
+
+            const pokemonName = document.createElement('p');
+            pokemonName.textContent = pokemon.name;
+
+            pokemonBox.appendChild(pokemonImage);
+            pokemonBox.appendChild(pokemonName);
+
+            return pokemonBox; // Retorna a caixa criada
+        }
+
+        // Evento de rolagem para carregar mais Pokémon
+        window.addEventListener('scroll', () => {
+            // Verifica se o usuário chegou ao final da página
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100 ) {
+                fetchPokemon(); // Chama a função para buscar mais Pokémon
+            }
+        });
+
+        // Chama a função para buscar e exibir Pokémon ao carregar a página
+        fetchPokemon();
+    </script>
+</body>
+
+</html>

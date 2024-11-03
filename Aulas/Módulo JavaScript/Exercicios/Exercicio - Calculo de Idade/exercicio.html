@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio</title>
+</head>
+
+<body>
+    <script>
+        var anonascimento = window.prompt('Qual o seu Ano de Nascimento?')
+        var anoatual = window.prompt('Qual o ano atual?')
+        
+        
+        while(anoatual > 2024) {
+            alert('Por favor, digite o ano corretamente')
+            anoatual = window.prompt('Qual o ano atual?')
+        }
+        
+        var idade = anoatual - anonascimento
+        alert ('Sua idade é ' + idade)
+
+    </script>
+</body>
+
+</html>

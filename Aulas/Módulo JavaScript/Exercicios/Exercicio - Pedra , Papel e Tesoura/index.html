@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedra Papel Tesoura</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            margin: 0; /* Remove margens padrão */
+            overflow-y: auto; /* Permite rolagem vertical */
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .player-options,
+        .enemy-options {
+            display: flex;
+            flex-direction: column; /* Coloca as imagens uma embaixo da outra */
+            align-items: center; /* Centraliza as imagens dentro da coluna */
+            width: 200px; /* Define uma largura fixa para as colunas */
+            margin: 0 auto; /* Centraliza as colunas na tela */
+        }
+
+        .player-options img,
+        .enemy-options img {
+            width: 100px; /* Largura fixa para as imagens */
+            opacity: 0.3; /* Define a opacidade padrão das imagens */
+            cursor: pointer;
+            margin: 10px 0; /* Espaço entre as imagens */
+        }
+
+        .align {
+            display: flex;
+            justify-content: space-between; /* Espaça as colunas para os lados */
+            width: 100%; /* Ocupa 100% da largura da tela */
+            margin-top: 20px; /* Espaço entre o título e as opções */
+        }
+
+        #resultado {
+            text-align: center;
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Pedra Papel Tesoura</h1>
+
+    <div class="align">
+        <div class="player-options">
+            <div><img opt="Pedra" src="rock.png"></div>
+            <div><img opt="Papel" src="paper.png"></div>
+            <div><img opt="Tesoura" src="scisor.png"></div>
+        </div>
+        <div class="enemy-options">
+            <div><img opt="Pedra" src="rock.png"></div>
+            <div><img opt="Papel" src="paper.png"></div>
+            <div><img opt="Tesoura" src="scisor.png"></div>
+        </div>
+    </div>
+
+    <div id="resultado"></div>
+
+    <script>
+        var elementos = document.querySelectorAll('.player-options div > img');
+        var enemyOptions = document.querySelectorAll('.enemy-options div > img');
+        var playeropt = "";
+        var enemyChoice = "";
+
+        function inimigojogar() {
+            // Resetar a opacidade de todas as opções do inimigo
+            enemyOptions.forEach(option => {
+                option.style.opacity = 0.3; // Reseta a opacidade
+            });
+
+            let rand = Math.floor(Math.random() * 3);
+            enemyChoice = enemyOptions[rand];
+            enemyChoice.style.opacity = 1; // Aumenta a opacidade da escolha do inimigo
+            
+            // Usar setTimeout para atrasar a exibição do alerta
+            setTimeout(() => {
+                alert("A Máquina escolheu: " + enemyChoice.getAttribute('opt'));
+                determinarVencedor();
+            }, 1000); // Atraso de 500ms
+        }
+
+        function determinarVencedor() {
+            const enemyOpt = enemyChoice.getAttribute('opt');
+            let resultado;
+            if (playeropt === enemyOpt) {
+                resultado = "Empate!";
+            } else if (
+                (playeropt === "Pedra" && enemyOpt === "Tesoura") ||
+                (playeropt === "Papel" && enemyOpt === "Pedra") ||
+                (playeropt === "Tesoura" && enemyOpt === "Papel")
+            ) {
+                resultado = "Kevin ganhou!";
+            } else {
+                resultado = "A Máquina ganhou!";
+            }
+            alert(resultado); // Exibe o resultado em forma de alerta
+        }
+
+        for (var i = 0; i < elementos.length; i++) {
+            elementos[i].addEventListener('click', function() {
+                // Resetar a opacidade de todas as opções do jogador
+                elementos.forEach(option => {
+                    option.style.opacity = 0.3; // Reseta a opacidade
+                });
+
+                playeropt = this.getAttribute('opt');
+                this.style.opacity = 1; // Aumenta a opacidade da escolha do jogador
+                alert("Kevin escolheu: " + playeropt); // Exibe a escolha de Kevin em um alerta
+                inimigojogar();
+            });
+        }
+    </script>
+</body>
+
+</html>

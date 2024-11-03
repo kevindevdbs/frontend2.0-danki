@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+</head>
+
+<body>
+    <div class="container">
+
+    </div>
+
+    <script>
+        const apiKey = '506fadb0256c13349acc05dabebf9604';
+        const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
+
+        fetch(url, {
+            method: 'GET',
+        })
+            .then(response => response.json())
+            .then(function (json) {
+                const container = document.querySelector('.container');
+                json.results.forEach(function (val) {
+                    const movieElement = document.createElement('div');
+                    movieElement.innerHTML = `
+                    <h2 class="movie-title">${val.original_title}</h2>
+                    <hr>
+                    <div class="description" style="display: none;">${val.overview}</div>
+                `;
+                    container.appendChild(movieElement);
+
+                    // Adiciona o estilo de cursor pointer ao título do filme
+                    const titleElement = movieElement.querySelector('.movie-title');
+                    titleElement.style.cursor = 'pointer'; // Define o cursor pointer
+
+                    // Adiciona o evento de clique no título do filme
+                    titleElement.addEventListener('click', function () {
+                        const descriptionElement = movieElement.querySelector('.description');
+                        // Alterna a exibição da descrição
+                        if (descriptionElement.style.display === 'none') {
+                            descriptionElement.style.display = 'block'; // Exibe a descrição
+                        } else {
+                            descriptionElement.style.display = 'none'; // Oculta a descrição
+                        }
+                    });
+                });
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio</title>
+</head>
+
+<body>
+    <script>
+        // Início da implementação da calculadora dinâmica
+
+        // Solicita ao usuário o primeiro número
+        var numero1 = parseFloat(window.prompt('Informe o Primeiro Numero.'));
+
+        // Verifica se o número informado é -1 e solicita um número positivo
+        if(numero1 <= -1){
+            alert('Informe um Numero Positivo!')
+            numero1 = parseFloat(window.prompt('Informe o Primeiro Numero.'))
+        }
+
+        // Enquanto o valor informado não for um número, solicita novamente
+        while(isNaN(numero1)){
+            alert ('Por favor, digite um número.')
+            numero1 = parseFloat(window.prompt('Informe o Primeiro Numero.'))
+        }
+
+        // Solicita ao usuário o sinal da operação (soma, subtração, multiplicação ou divisão)
+        var sinal = window.prompt('Informe o Sinal.');
+
+        // Verifica se o sinal informado é válido, caso contrário, solicita novamente
+        while (sinal != '-' && sinal != '+' && sinal != '*' && sinal != '/') {
+            window.alert('O Sinal é Inválido! Tente Novamente.');
+            sinal = window.prompt('Informe o Sinal.');
+        }
+
+        // Solicita ao usuário o segundo número
+        var numero2 = parseFloat(window.prompt('Informe o Segundo Numero.'));
+
+        // Verifica se o número informado é -1 e solicita um número positivo
+        if(numero2 <= -1){
+            alert('Informe um Numero Positivo!')
+            numero2 = parseFloat(window.prompt('Informe o Primeiro Numero.'))
+        }
+
+        // Enquanto o valor informado não for um número, solicita novamente
+        while(isNaN(numero2)){
+            alert ('Por favor, digite um número.')
+            numero2 = parseFloat(window.prompt('Informe o Segundo Numero.'))
+        }
+
+        // Realiza a operação com base no sinal e exibe o resultado
+        if (sinal == '+') {
+            window.alert('O Resultado é: ' + (numero1 + numero2)); // Soma
+        }
+        else if (sinal == '-') {
+            window.alert('O Resultado é: ' + (numero1 - numero2)); // Subtração
+        }
+        else if (sinal == '*') {
+            window.alert('O Resultado é: ' + (numero1 * numero2)); // Multiplicação
+        }
+        else if(sinal == '/') {
+            window.alert('O Resultado é: ' + (numero1 / numero2)); // Divisão
+        }
+    </script>
+</body>
+
+</html>

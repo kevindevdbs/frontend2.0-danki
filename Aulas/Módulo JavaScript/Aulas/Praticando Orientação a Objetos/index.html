@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orientação a Objetos</title>
+</head>
+
+<body>
+    <script>
+    function pessoa(nome, idade, profissao) { 
+        this.nome = nome; // Atribui o parâmetro 'nome' à propriedade 'nome' do objeto
+        this.idade = idade; // Atribui o parâmetro 'idade' à propriedade 'idade' do objeto
+        this.profissao = profissao; // Atribui o parâmetro 'profissao' à propriedade 'profissao' do objeto
+
+        // Método que exibe um alerta com o nome da pessoa
+
+        this.falar = function () { 
+            alert(this.nome); // Exibe o nome da pessoa em um alerta
+        }
+
+        // Método que recebe um objeto 'animal' e o retorna
+
+        this.returnanimal = function (animal) { 
+            return animal; // Retorna o objeto 'animal' passado como argumento
+        }
+    }
+
+    // Função construtora para criar um objeto 'animal'
+
+    function animal() { 
+        this.nome = 'Cachorro'; // Atribui o valor 'Cachorro' à propriedade 'nome' do objeto
+    }
+
+    // Cria uma nova instância de 'pessoa' sem parâmetros (propriedades serão undefined)
+    var pessoa = new pessoa(); 
+    // Cria uma nova instância de 'animal'
+    var animal = new animal(); 
+
+    // Exibe um alerta com o objeto 'animal' retornado pelo método 'returnanimal' da instância de 'pessoa'
+    alert(pessoa.returnanimal(animal)); 
+</script>
+
+
+    </script>
+</body>
+
+</html>

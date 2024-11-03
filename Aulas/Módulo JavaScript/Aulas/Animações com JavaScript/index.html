@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin-left: 0px;
+        }
+
+        .animesquerda {
+            transition: 1s;
+            margin-left: 90px;
+            width: 300px;
+            height: 300px;
+            background-color: blue;
+            border-radius: 50%;
+            border : 1px solid black
+        }
+    </style> -->
+    <style>
+        span {
+            cursor: pointer;
+            font-size: 10px;
+        }
+
+        .conteudo p {
+            height: 0;
+            overflow: hidden;
+            transition: 1s;
+        }
+
+        .mostrar{
+            height: auto !important;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="conteudo">
+        <h1>Titulo do Conteudo <span>Ver mais</span></h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est dolorum ad voluptatem ducimus sunt nostrum eum
+            reprehenderit consequuntur vero sed, illo aspernatur eveniet. At ab sequi odit, soluta ullam iure! Lorem
+            ipsum dolor sit amet consectetur adipisicing elit. Adipisci odio et ducimus debitis eos, enim consequatur
+            numquam sequi possimus temporibus eum obcaecati aspernatur tempora eaque quaerat maxime, rerum corporis
+            accusamus.</p>
+    </div>
+    <!-- <div class="box"></div>
+    <script>
+        var box = document.querySelector('.box')
+        // setTimeout(() => {
+        //     box.classList.add('animesquerda')
+        // }, 2000)
+
+        box.addEventListener ('click', () => {
+            box.classList.add('animesquerda')
+            
+        })
+    </script> -->
+    <script>
+        // Seleciona todos os elementos  que estão dentro de um elemento com a classe 'conteudo'
+        var spans = document.querySelectorAll('.conteudo span');
+
+        // Para cada  encontrado, adiciona um evento de clique
+        spans.forEach(function (span) {
+            span.addEventListener('click', function () {
+                // Busca o próximo elemento irmão do elemento pai do  clicado
+                var conteudo = this.parentElement.nextElementSibling;
+
+                // Verifica se o próximo elemento já tem a classe 'mostrar'
+                if (conteudo.classList.contains('mostrar')) {
+                    // Se tiver, altera o texto do  para 'Ver mais!' e remove a classe 'mostrar'
+                    this.innerHTML = 'Ver mais!';
+                    conteudo.classList.remove('mostrar');
+                } else {
+                    // Se não tiver, altera o texto do  para 'Ocultar' e adiciona a classe 'mostrar'
+                    this.innerHTML = 'Ocultar';
+                    conteudo.classList.add('mostrar');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
